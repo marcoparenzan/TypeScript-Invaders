@@ -72,6 +72,9 @@ DocProject/Help/*.hhp
 DocProject/Help/Html2
 DocProject/Help/html
 
+# PublishProfiles directory
+PublishProfiles
+
 # Click-Once directory
 publish
 
