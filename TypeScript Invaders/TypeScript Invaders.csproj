@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <ProjectGuid>{741EFB8B-B4D8-400B-B9BE-BC34CDE04C13}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <OutputPath>bin</OutputPath>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UpgradeBackupLocation />
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="app.js">
+      <DependentUpon>app.ts</DependentUpon>
+    </Content>
+    <Content Include="app.min.js">
+      <DependentUpon>app.ts</DependentUpon>
+    </Content>
+    <Content Include="assets\images\bullet.png" />
+    <Content Include="assets\images\enemy-blue.png" />
+    <Content Include="assets\images\enemy-cyan.png" />
+    <Content Include="assets\images\enemy-green.png" />
+    <Content Include="assets\images\enemy-pink.png" />
+    <Content Include="assets\images\enemy-red.png" />
+    <Content Include="assets\images\enemy-yellow.png" />
+    <Content Include="assets\images\mother-ship.png" />
+    <Content Include="assets\images\ship.png" />
+    <Content Include="css\modern-responsive.css" />
+    <Content Include="css\modern.css" />
+    <Content Include="css\site.css" />
+    <Content Include="css\theme-dark.css" />
+    <Content Include="default.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="app.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\iconFont.svg" />
+    <Content Include="fonts\license.txt" />
+    <Content Include="images\1.jpg" />
+    <Content Include="images\1005-BizSpark-261x230.jpg" />
+    <Content Include="images\2.jpg" />
+    <Content Include="images\3.jpg" />
+    <Content Include="images\4.jpg" />
+    <Content Include="images\5.jpg" />
+    <Content Include="images\armor.png" />
+    <Content Include="images\author.jpg" />
+    <Content Include="images\bage-activity.png" />
+    <Content Include="images\bage-alert.png" />
+    <Content Include="images\bage-attention.png" />
+    <Content Include="images\bage-available.png" />
+    <Content Include="images\bage-away.png" />
+    <Content Include="images\bage-busy.png" />
+    <Content Include="images\bage-error.png" />
+    <Content Include="images\bage-newMessage.png" />
+    <Content Include="images\bage-paused.png" />
+    <Content Include="images\bage-playing.png" />
+    <Content Include="images\bage-unavailable.png" />
+    <Content Include="images\Calendar128.png" />
+    <Content Include="images\Camera48.png" />
+    <Content Include="images\chrome.png" />
+    <Content Include="images\collapse24-black.png" />
+    <Content Include="images\collapse24.png" />
+    <Content Include="images\collapse32-black.png" />
+    <Content Include="images\collapse32.png" />
+    <Content Include="images\download-32.png" />
+    <Content Include="images\excel2013icon.png" />
+    <Content Include="images\expand24-black.png" />
+    <Content Include="images\expand24.png" />
+    <Content Include="images\expand32-black.png" />
+    <Content Include="images\expand32.png" />
+    <Content Include="images\firefox.png" />
+    <Content Include="images\fork-32.png" />
+    <Content Include="images\github.png" />
+    <Content Include="images\grid.png" />
+    <Content Include="images\icons-white.png" />
+    <Content Include="images\icons.png" />
+    <Content Include="images\ie.png" />
+    <Content Include="images\InternetExplorer128.png" />
+    <Content Include="images\lock-open.png" />
+    <Content Include="images\lock.png" />
+    <Content Include="images\logo-jetbrains.jpg" />
+    <Content Include="images\logo32.png" />
+    <Content Include="images\Mail128.png" />
+    <Content Include="images\Market128.png" />
+    <Content Include="images\michael.jpg" />
+    <Content Include="images\Music128.png" />
+    <Content Include="images\myface.jpg" />
+    <Content Include="images\onenote2013icon.png" />
+    <Content Include="images\opera.png" />
+    <Content Include="images\Picture128.png" />
+    <Content Include="images\preloader-w8-cycle-black.gif" />
+    <Content Include="images\preloader-w8-cycle-white.gif" />
+    <Content Include="images\preloader-w8-line-black.gif" />
+    <Content Include="images\preloader-w8-line-white.gif" />
+    <Content Include="images\pull24-dark.png" />
+    <Content Include="images\pull24.png" />
+    <Content Include="images\responsive.png" />
+    <Content Include="images\row24.png" />
+    <Content Include="images\Rss128.png" />
+    <Content Include="images\shield-user.png" />
+    <Content Include="images\simple.png" />
+    <Content Include="images\star32.png" />
+    <Content Include="images\stock-up.png" />
+    <Content Include="images\Video128.png" />
+    <Content Include="images\view-32.png" />
+    <Content Include="images\windows-8-metro.jpg" />
+    <Content Include="images\windows8_metro_green_1920_1080.jpg" />
+    <Content Include="images\word2013icon.png" />
+    <Content Include="images\YouTube128.png" />
+    <Content Include="jquery.d.ts" />
+    <Content Include="js\assets\github.info.js" />
+    <Content Include="js\assets\google-analytics.js" />
+    <Content Include="js\assets\jquery-1.8.2.min.js" />
+    <Content Include="js\assets\jquery-1.9.0.min.js" />
+    <Content Include="js\assets\jquery.mousewheel.min.js" />
+    <Content Include="js\google-code-prettify\lang-apollo.js" />
+    <Content Include="js\google-code-prettify\lang-clj.js" />
+    <Content Include="js\google-code-prettify\lang-css.js" />
+    <Content Include="js\google-code-prettify\lang-go.js" />
+    <Content Include="js\google-code-prettify\lang-hs.js" />
+    <Content Include="js\google-code-prettify\lang-lisp.js" />
+    <Content Include="js\google-code-prettify\lang-lua.js" />
+    <Content Include="js\google-code-prettify\lang-ml.js" />
+    <Content Include="js\google-code-prettify\lang-n.js" />
+    <Content Include="js\google-code-prettify\lang-proto.js" />
+    <Content Include="js\google-code-prettify\lang-scala.js" />
+    <Content Include="js\google-code-prettify\lang-sql.js" />
+    <Content Include="js\google-code-prettify\lang-tex.js" />
+    <Content Include="js\google-code-prettify\lang-vb.js" />
+    <Content Include="js\google-code-prettify\lang-vhdl.js" />
+    <Content Include="js\google-code-prettify\lang-wiki.js" />
+    <Content Include="js\google-code-prettify\lang-xq.js" />
+    <Content Include="js\google-code-prettify\lang-yaml.js" />
+    <Content Include="js\google-code-prettify\prettify.css" />
+    <Content Include="js\google-code-prettify\prettify.js" />
+    <Content Include="js\modern\accordion.js" />
+    <Content Include="js\modern\buttonset.js" />
+    <Content Include="js\modern\carousel.js" />
+    <Content Include="js\modern\dialog.js" />
+    <Content Include="js\modern\dropdown.js" />
+    <Content Include="js\modern\input-control.js" />
+    <Content Include="js\modern\pagecontrol.js" />
+    <Content Include="js\modern\rating.js" />
+    <Content Include="js\modern\slider.js" />
+    <Content Include="js\modern\start-menu.js" />
+    <Content Include="js\modern\tile-drag.js" />
+    <Content Include="js\modern\tile-slider.js" />
+    <Content Include="js\sharrre\jquery.sharrre-1.3.4.min.js" />
+    <Content Include="web.config" />
+    <Content Include="app.js.map">
+      <DependentUpon>app.ts</DependentUpon>
+    </Content>
+    <Content Include="app.min.js.map">
+      <DependentUpon>app.js</DependentUpon>
+    </Content>
+    <Content Include="fonts\iconFont.eot" />
+    <Content Include="fonts\iconFont.ttf" />
+    <Content Include="fonts\iconFont.woff" />
+    <Content Include="js\sharrre\sharrre.php" />
+    <None Include="PublishProfiles\typescript-invaders - FTP.pubxml" />
+    <None Include="PublishProfiles\typescript-invaders - Web Deploy.pubxml" />
+    <None Include="web.Debug.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+    <None Include="web.Release.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>TypeScriptInvaders</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyName>TypeScriptInvaders</AssemblyName>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>52726</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:51346/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <TypeScriptTarget>ES3</TypeScriptTarget>
+    <TypeScriptIncludeComments>true</TypeScriptIncludeComments>
+    <TypeScriptSourceMap>true</TypeScriptSourceMap>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <TypeScriptTarget>ES3</TypeScriptTarget>
+    <TypeScriptIncludeComments>false</TypeScriptIncludeComments>
+    <TypeScriptSourceMap>false</TypeScriptSourceMap>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" />
+</Project>
