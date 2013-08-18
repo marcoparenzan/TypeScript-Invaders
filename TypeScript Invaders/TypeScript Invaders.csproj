@@ -119,7 +119,6 @@
     <Content Include="images\windows8_metro_green_1920_1080.jpg" />
     <Content Include="images\word2013icon.png" />
     <Content Include="images\YouTube128.png" />
-    <Content Include="jquery.d.ts" />
     <Content Include="js\assets\github.info.js" />
     <Content Include="js\assets\google-analytics.js" />
     <Content Include="js\assets\jquery-1.8.2.min.js" />
@@ -158,6 +157,26 @@
     <Content Include="js\modern\tile-drag.js" />
     <Content Include="js\modern\tile-slider.js" />
     <Content Include="js\sharrre\jquery.sharrre-1.3.4.min.js" />
+    <Content Include="Scripts\typings\backbone\backbone.d.ts" />
+    <Content Include="Scripts\typings\bootstrap\bootstrap.d.ts" />
+    <Content Include="Scripts\typings\d3\d3.d.ts" />
+    <Content Include="Scripts\typings\d3\d3.superformula.d.ts" />
+    <Content Include="Scripts\typings\easeljs\easeljs.d.ts" />
+    <Content Include="Scripts\typings\jquery\jquery.d.ts" />
+    <Content Include="Scripts\typings\linq\linq.3.0.3-Beta4.d.ts" />
+    <Content Include="Scripts\typings\linq\linq.d.ts" />
+    <Content Include="Scripts\typings\linq\linq.jquery.d.ts" />
+    <Content Include="Scripts\typings\modernizr\modernizr.d.ts" />
+    <Content Include="Scripts\typings\rx.js\rx.js.aggregates.d.ts" />
+    <Content Include="Scripts\typings\rx.js\rx.js.binding.d.ts" />
+    <Content Include="Scripts\typings\rx.js\rx.js.coincidence.d.ts" />
+    <Content Include="Scripts\typings\rx.js\rx.js.d.ts" />
+    <Content Include="Scripts\typings\rx.js\rx.js.joinpatterns.d.ts" />
+    <Content Include="Scripts\typings\rx.js\rx.js.jquery.d.ts" />
+    <Content Include="Scripts\typings\rx.js\rx.js.time.d.ts" />
+    <Content Include="Scripts\typings\signalr\signalr.d.ts" />
+    <Content Include="Scripts\typings\tweenjs\tweenjs.d.ts" />
+    <Content Include="Scripts\typings\underscore\underscore.d.ts" />
     <Content Include="web.config" />
     <Content Include="app.js.map">
       <DependentUpon>app.ts</DependentUpon>
@@ -169,6 +188,7 @@
     <Content Include="fonts\iconFont.ttf" />
     <Content Include="fonts\iconFont.woff" />
     <Content Include="js\sharrre\sharrre.php" />
+    <Content Include="packages.config" />
     <None Include="PublishProfiles\typescript-invaders - FTP.pubxml" />
     <None Include="PublishProfiles\typescript-invaders - Web Deploy.pubxml" />
     <None Include="web.Debug.config">

@@ -1,461 +1,412 @@
-/// <reference path="jquery.d.ts" />
+/// <reference path="Scripts/typings/jquery/jquery.d.ts" />
 // http://stackoverflow.com/questions/12682028/how-do-i-get-jquery-autocompletion-in-typescript
 
 class Sprite {
 
-    id: string;
-    type: string;
-    x: number;
-    y: number;
-    frames: HTMLImageElement;
-    bounding_ray: number;
+    _id: string;
+    _type: string;
+    _x: number;
+    _y: number;
 
-    collides_callback: (sprite: Sprite, other_sprite: Sprite) => bool;
-    render_callback: (sprite: Sprite, context: CanvasRenderingContext2D)=>void;
-    update_callback: (sprite: Sprite, game_level: GameLevel) => void;
-    move_callback: (sprite: Sprite, dx: number, dy: number) => void;
+    _sprite_sheet: SpriteSheet;
+    _bounding_ray: number;
 
-    collides(other_sprite: Sprite): bool {
-        if (this.collides_callback != undefined)
-            return this.collides_callback(this, other_sprite);
-        else {
-            if (this.bounding_ray == 0) return false;
-            if (other_sprite.bounding_ray == 0) return false;
-            var dx = this.x - other_sprite.x;
-            var dy = this.y - other_sprite.y;
-            var double_of = dx * dx + dy * dy;
-            var d = Math.sqrt(double_of);
-            if (d < (this.bounding_ray + other_sprite.bounding_ray))
-                return true;
-            else
-                return false;
-       }
-    }
-
-    collided(other_sprite: Sprite, game_level: GameLevel)
-    {
-    }
-
-    render(context: CanvasRenderingContext2D) {
-        if (this.render_callback != undefined)
-            this.render_callback(this, context);
+    collides(other_sprite: Sprite): boolean {
+        if (this._bounding_ray == 0) return false;
+        if (other_sprite._bounding_ray == 0) return false;
+        var dx = this._x - other_sprite._x;
+        var dy = this._y - other_sprite._y;
+        var double_of = dx * dx + dy * dy;
+        var d = Math.sqrt(double_of);
+        if (d < (this._bounding_ray + other_sprite._bounding_ray))
+            return true;
         else
-        {
-            // http://www.w3schools.com/tags/canvas_drawimage.asp
-            context.drawImage(this.frames, this.x - this.frames.width / 2, this.y - this.frames.height / 2);
-        }
+            return false;
     }
 
-    update(game_level: GameLevel) {
-        if (this.update_callback != undefined)
-            this.update_callback(this, game_level);
-        else {
+    collided(other_sprite: Sprite, context: InvasionLevel, state: GameState) {
+    }
 
-        }
+    update(context: InvasionLevel, state: GameState) {
+    }
+
+    render(render_context: GameScreen) {
+        render_context.draw(this._sprite_sheet, this._x, this._y);
     }
 
     move(dx: number, dy: number) {
-        if (this.move_callback != undefined)
-            this.move_callback(this, dx, dy);
-        else
-        {
-            this.x += dx;
-            this.y += dy;
-        }
+        this._x += dx;
+        this._y += dy;
     }
 
-    constructor(id: string, type:string, x: number, y: number, frames: HTMLImageElement) {
-        this.id = id;
-        this.type = type;
-        this.x = x;
-        this.y = y;
-        this.frames = frames;
+    constructor(id: string, type:string, x: number, y: number, sprite_sheet: SpriteSheet) {
+        this._id = id;
+        this._type = type;
+        this._x = x;
+        this._y = y;
+        this._sprite_sheet = sprite_sheet;
     }
 }
 
 class Ship extends Sprite
 {
     constructor(id: string, x: number, y: number) {
-        var frames: HTMLImageElement = new Image();
-        frames.src = "assets/images/ship.png";
-        super(id, "ship", x, y, frames);
+        var sprite_sheet = new SpriteSheet("assets/images/ship.png");
+        super(id, "ship", x, y, sprite_sheet);
 
-        this.bounding_ray = 10;
-        this.energy = 100;
-        this.shoot_power = 10;
+        this._bounding_ray = 10;
+        this._energy = 100;
+        this._shoot_power = 10;
     }
 
-    energy: number;
-    shoot_power: number;
+    _energy: number;
+    _shoot_power: number;
 
     add_energy(energy: number) {
-        this.energy += energy;
-        if (this.energy > 100) this.energy = 100;
+        this._energy += energy;
+        if (this._energy > 100) this._energy = 100;
     }
 
     increase_shoot_power()
     {
-        this.shoot_power += 10;
+        this._shoot_power += 10;
     }
 
-    collided(other_sprite: Sprite, game_level: GameLevel) {
+    collided(other_sprite: Sprite, context: InvasionLevel, state: GameState) {
         if (other_sprite instanceof Enemy)
         {
             var enemy = <Enemy>other_sprite;
-            this.energy -= enemy.energy;
-            if (this.energy <= 0) {
-                game_level.loose_life();
+            this._energy -= enemy._energy;
+            if (this._energy <= 0) {
+                context.loose_life(state);
             }
         }
     }
 
-    shoot(game_level: GameLevel): void
+    shoot(context: InvasionLevel)
     {
-        var bullet: ShipBullet = new ShipBullet("", this.x, this.y);
-        game_level.add_ship_bullet(bullet);
+        var bullet: ShipBullet = new ShipBullet("", this._x, this._y);
+        context.add_ship_bullet(bullet);
     }
 }
 
 class ShipBullet extends Sprite {
     constructor(id: string, x: number, y: number) {
-        var frames: HTMLImageElement = new Image();
-        frames.src = "assets/images/bullet.png";
-        super(id, "bullet", x, y, frames);
+        var sprite_sheet = new SpriteSheet("assets/images/bullet.png");
+        super(id, "bullet", x, y, sprite_sheet);
 
-        this.bounding_ray = 7;
-        this.energy = 10;
+        this._bounding_ray = 7;
+        this._energy = 10;
     }
 
-    energy: number;
+    _energy: number;
 
-    update(game_level: GameLevel) {
+    update(context: InvasionLevel, state: GameState) {
         this.move(0, -5);
-        if (this.y < 0) game_level.remove_ship_bullet(this);
+        if (this._y < 0) context.remove_ship_bullet(this);
     }
 
-    collided(other_sprite: Sprite, game_level: GameLevel) {
-        game_level.remove_ship_bullet(this);
+    collided(other_sprite: Sprite, context: InvasionLevel, state: GameState) {
+        context.remove_ship_bullet(this);
     }
 }
 
 class EnemyBullet extends Sprite {
     constructor(id: string, x: number, y: number) {
-        var frames: HTMLImageElement = new Image();
-        frames.src = "assets/images/bullet.png";
-        super(id, "bullet", x, y, frames);
+        var sprite_sheet = new SpriteSheet("assets/images/bullet.png");
+        super(id, "bullet", x, y, sprite_sheet);
 
-        this.bounding_ray = 7;
-        this.energy = 5;
+        this._bounding_ray = 7;
+        this._energy = 5;
     }
 
-    energy: number;
+    _energy: number;
 
-    update(game_level: GameLevel) {
+    update(context: InvasionLevel, state: GameState) {
         this.move(0, +5);
-        if (this.y > 500) game_level.remove_enemy_bullet(this);
+        if (this._y > 500) context.remove_enemy_bullet(this);
     }
 
-    collided(other_sprite: Sprite, game_level: GameLevel) {
-        game_level.remove_enemy_bullet(this);
+    collided(other_sprite: Sprite, context: InvasionLevel, state: GameState) {
+        context.remove_enemy_bullet(this);
     }
 }
 
 class Bonus extends Sprite {
 
-    type: string;
+    _type: string;
 
     constructor(id: string, x: number, y: number, type: string) {
-        var frames: HTMLImageElement = new Image();
-        this.type = type;
-        this.bounding_ray = 7;
+        this._type = type;
+        this._bounding_ray = 7;
+
+        var sprite_sheet: SpriteSheet = undefined;
         switch (type)
         {
             case "life":
-                frames.src = "assets/images/bonus-life.png";
+                sprite_sheet = new SpriteSheet("assets/images/bonus-life.png");
                 break;
             case "energy":
-                frames.src = "assets/images/bonus-energy.png";
+                sprite_sheet = new SpriteSheet("assets/images/bonus-energy.png");
                 break;
             case "power":
-                frames.src = "assets/images/bonus-power.png";
+                sprite_sheet = new SpriteSheet("assets/images/bonus-power.png");
                 break;
             case "coin":
-                frames.src = "assets/images/bonus-coin.png";
+                sprite_sheet = new SpriteSheet("assets/images/bonus-coin.png");
                 break;
         }
-        super(id, "bonus", x, y, frames);
+        super(id, "bonus", x, y, sprite_sheet);
     }
 
-    collided(other_sprite: Sprite, game_level: GameLevel) {
+    collided(other_sprite: Sprite, context: InvasionLevel, state: GameState) {
         if (other_sprite instanceof ShipBullet)
         {
-            switch (this.type) {
+            switch (this._type) {
                 case "life":
-                    game_level.add_life();
+                    state.add_life();
                     break;
                 case "energy":
-                    game_level.main.add_energy(50);
+                    context.add_energy_to_main(50);
                     break;
                 case "power":
-                    game_level.main.increase_shoot_power();
+                    context.increase_shoot_power_to_main();
                     break;
                 case "coin":
-                    game_level.scores(100);
+                    state.add_score(100);
                     break;
             }
         }
-        game_level.remove_bonus(this);
-    }
-}
-
-class Animation extends Sprite {
-
-    type: string;
-
-    constructor(id: string, x: number, y: number, type: string) {
-        var frames: HTMLImageElement = new Image();
-        this.type = type;
-        this.bounding_ray = 7;
-        switch (type) {
-            case "life":
-                frames.src = "assets/images/bonus-life.png";
-                break;
-            case "energy":
-                frames.src = "assets/images/bonus-energy.png";
-                break;
-            case "power":
-                frames.src = "assets/images/bonus-power.png";
-                break;
-            case "coin":
-                frames.src = "assets/images/bonus-coin.png";
-                break;
-        }
-        super(id, "bonus", x, y, frames);
+        context.remove_bonus(this);
     }
 }
 
 class Enemy extends Sprite {
-    constructor(id: string, type:string, x: number, y: number, frames: HTMLImageElement) {
-        super(id, type, x, y, frames);
+    constructor(id: string, type: string, x: number, y: number, sprite_sheet: SpriteSheet) {
+        super(id, type, x, y, sprite_sheet);
 
-        this.bounding_ray = 20;
-        this.energy = 10;
-        this.score = 100;
+        this._energy = 10;
+        this._score = 100;
+        this._bounding_ray = 15;
     }
 
-    energy: number;
-    score: number;
+    _energy: number;
+    _score: number;
+
+    update(context: InvasionLevel, state: GameState) {
+    }
+
+    collided(other_sprite: Sprite, context: InvasionLevel, state: GameState) {
+    }
 }
 
-class BaseEnemy extends Enemy {
-    constructor(id: string, type: string, x: number, y: number, frames: HTMLImageElement) {
-        this.direction_left_to_right = true;
-        this.count = 30;
-        this.down_times = 0;
+class Invader extends Enemy {
 
-        super(id, type, x, y, frames);
+    _direction_left_to_right: boolean;
+    _count: number;
+    _down_times: number;
 
-        this.bounding_ray = 15;
-        this.energy = 10;
-        this.score = 100;
+    constructor(id: string, type: string, x: number, y: number) {
+        var sprite_sheet = new SpriteSheet("assets/images/enemy-" + type + ".png");
+        super(id, "enemy", x, y, sprite_sheet);
+
+        this._direction_left_to_right = true;
+        this._count = 30;
+        this._down_times = 0;
     }
 
-    direction_left_to_right: bool;
-    count: number;
-    down_times: number;
-
-    update(game_level: GameLevel) {
-        if (this.count > 0) {
-            if (this.direction_left_to_right) {
+    update(context: InvasionLevel, state: GameState) {
+        if (this._count > 0) {
+            if (this._direction_left_to_right) {
                 this.move(5, 0);
             } else {
                 this.move(-5, 0);
             }
-            this.count--;
+            this._count--;
         }
         else {
             this.move(0, 5);
-            this.direction_left_to_right = !this.direction_left_to_right;
-            this.count = 30;
-            this.down_times++;
-            if (this.down_times >= 100) {
-                stop_game();
-                // end game_level
-            }
+            this._direction_left_to_right = !this._direction_left_to_right;
+            this._count = 30;
+            this._down_times++;
         }
     }
 
-    collided(other_sprite: Sprite, game_level: GameLevel) {
+    collided(other_sprite: Sprite, context: InvasionLevel, state: GameState) {
         if (other_sprite instanceof ShipBullet) {
             var bullet = <ShipBullet>other_sprite;
-            this.energy -= bullet.energy;
-            if (this.energy <= 0) {
-                game_level.scores(this.score);
-                game_level.remove_enemy(this);
+            this._energy -= bullet._energy;
+            if (this._energy <= 0) {
+                state.add_score(this._score);
+                context.remove_enemy(this);
             }
         }
     }
 }
 
-class EnemyBlue extends BaseEnemy {
-    constructor(id: string, x: number, y: number) {
-        var frames: HTMLImageElement = new Image();
-        frames.src = "assets/images/enemy-blue.png";
-
-        super(id, "enemy", x, y, frames);
-    }
-}
-
-class EnemyRed extends BaseEnemy {
-    constructor(id: string, x: number, y: number) {
-        var frames: HTMLImageElement = new Image();
-        frames.src = "assets/images/enemy-red.png";
-
-        super(id, "enemy", x, y, frames);
-    }
-}
-
-class EnemyYellow extends BaseEnemy {
-    constructor(id: string, x: number, y: number) {
-        var frames: HTMLImageElement = new Image();
-        frames.src = "assets/images/enemy-yellow.png";
-
-        super(id, "enemy", x, y, frames);
-    }
-}
-
-class EnemyGreen extends BaseEnemy {
-    constructor(id: string, x: number, y: number) {
-        var frames: HTMLImageElement = new Image();
-        frames.src = "assets/images/enemy-green.png";
-
-        super(id, "enemy", x, y, frames);
-    }
-}
-
-class EnemyPink extends BaseEnemy {
-    constructor(id: string, x: number, y: number) {
-        var frames: HTMLImageElement = new Image();
-        frames.src = "assets/images/enemy-pink.png";
-
-        super(id, "enemy", x, y, frames);
-    }
-}
-
-class EnemyCyan extends BaseEnemy {
-    constructor(id: string, x: number, y: number) {
-        var frames: HTMLImageElement = new Image();
-        frames.src = "assets/images/enemy-cyan.png";
-
-        super(id, "enemy", x, y, frames);
-    }
-}
-
-class GameLevel {
-
-    back_buffer_context: CanvasRenderingContext2D;
-    main: Ship;
-    enemies: Enemy[];
-    ship_bullets: ShipBullet[];
-    enemy_bullets: EnemyBullet[];
-    bonuses: Bonus[];
-    animations: Animation[];
-
+class GameState {
     lives: number;
     score: number;
+    paused: boolean;
+    on_end_game: () => void;
+    game_loop: () => void;
 
-    constructor(back_buffer_context: CanvasRenderingContext2D) {
-        this.back_buffer_context = back_buffer_context;
-        this.enemies = [];
-        this.enemy_bullets =[];
-        this.ship_bullets = [];
-        this.bonuses = [];
-        this.animations = [];
+    // suspension
 
-        this.main = new Ship("main", 500, 500);
-        var y = 0
-        for (var x = 0; x < 10; x++) {
-            this.enemies.push(new EnemyBlue("enemy" + y + x, 100 + x * 50, 20 + y * 50));
-        }
-        y++;
-        for (var x = 0; x < 10; x++) {
-            this.enemies.push(new EnemyRed("enemy" + y + x, 100 + x * 50, 20 + y * 50));
-        }
-        y++;
-        for (var x = 0; x < 10; x++) {
-            this.enemies.push(new EnemyGreen("enemy" + y + x, 100 + x * 50, 20 + y * 50));
-        }
-        y++;
-        for (var x = 0; x < 10; x++) {
-            this.enemies.push(new EnemyYellow("enemy" + y + x, 100 + x * 50, 20 + y * 50));
-        }
-        y++;
-        for (var x = 0; x < 10; x++) {
-            this.enemies.push(new EnemyPink("enemy" + y + x, 100 + x * 50, 20 + y * 50));
-        }
-        y++;
-        for (var x = 0; x < 10; x++) {
-            this.enemies.push(new EnemyCyan("enemy" + y + x, 100 + x * 50, 20 + y * 50));
-        }
+    _timerToken: number;
 
-        this.lives = 3;
-        this.score = 0;
+    _resume() {
+        var game_loop = this.game_loop;
+        this._timerToken = setInterval(function () {
+            game_loop();
+        }, 33);
+
+        this.paused = false;
     }
 
-    render(game_level: GameLevel) {
+    _suspend() {
+        clearTimeout(this._timerToken);
+        this.paused = true;
+    }
 
-        this.back_buffer_context.clearRect(0, 0, this.back_buffer_context.canvas.width, this.back_buffer_context.canvas.height);
-        this.enemies.forEach(function (enemy: Sprite, index: number, array: Sprite[]) {
-            enemy.render(game_level.back_buffer_context);
-        });
-        this.enemy_bullets.forEach(function (bullet: Sprite, index: number, array: Sprite[]) {
-            bullet.render(game_level.back_buffer_context);
-        });
-        this.ship_bullets.forEach(function (bullet: Sprite, index: number, array: Sprite[]) {
-            bullet.render(game_level.back_buffer_context);
-        });
-        this.bonuses.forEach(function (bonus: Sprite, index: number, array: Sprite[]) {
-            bonus.render(game_level.back_buffer_context);
-        });
-        this.main.render(game_level.back_buffer_context);
+    // public API
 
-        game_level.back_buffer_context.strokeText("SCORE: " + this.score.toString(), 10, 20);   
-        game_level.back_buffer_context.strokeText("LIVES: " + this.lives.toString(), 10, 45);
-   }
+    pause() {
+        if (this.paused) {
+            this._resume();
+        }
+        else {
+            this._suspend();
+        }
+    }
 
-    update(game_level: GameLevel) {
-        this.enemies.forEach(function (sprite: Sprite, index: number, array: Sprite[]) {
-            sprite.update(game_level);
+    add_score(score: number) {
+        this.score += score;
+    }
+
+    add_life() {
+        this.lives++;
+    }
+
+    loose_life(): boolean {
+        this.lives--;
+        return (this.lives <= 0);
+    }
+
+    get_lives(): number {
+        return this.lives;
+    }
+}
+
+class InvasionLevel {
+
+    private _main: Ship;
+
+    private _enemies: Enemy[];
+    private _ship_bullets: ShipBullet[];
+    private _enemy_bullets: EnemyBullet[];
+    private _bonuses: Bonus[];
+
+    constructor() {
+        var context = this;
+
+        context._main = new Ship("main", 500, 500);
+
+        context._enemies = [];
+        context._enemy_bullets = [];
+        context._ship_bullets = [];
+        context._bonuses = [];
+
+        var y: number = 0
+        var x: number = 0;
+        for (x = 0; x < 10; x++) {
+            context._enemies.push(new Invader("enemy" + y + x, "blue", 100 + x * 50, 20 + y * 50));
+        }
+        y++;
+        for (x = 0; x < 10; x++) {
+            context._enemies.push(new Invader("enemy" + y + x, "red", 100 + x * 50, 20 + y * 50));
+        }
+        y++;
+        for (x = 0; x < 10; x++) {
+            context._enemies.push(new Invader("enemy" + y + x, "green", 100 + x * 50, 20 + y * 50));
+        }
+        y++;
+        for (x = 0; x < 10; x++) {
+            context._enemies.push(new Invader("enemy" + y + x, "yellow", 100 + x * 50, 20 + y * 50));
+        }
+        y++;
+        for (x = 0; x < 10; x++) {
+            context._enemies.push(new Invader("enemy" + y + x, "pink", 100 + x * 50, 20 + y * 50));
+        }
+        y++;
+        for (x = 0; x < 10; x++) {
+            context._enemies.push(new Invader("enemy" + y + x, "cyan", 100 + x * 50, 20 + y * 50));
+        }
+    }
+
+    render_common(game_screen: GameScreen, state: GameState) {
+        game_screen.write("SCORE: " + state.score.toString(), 10, 20);
+        game_screen.write("LIVES: " + state.lives.toString(), 10, 45);
+    }
+
+    render(game_screen: GameScreen, state: GameState) {
+        var context = this;
+
+        game_screen.clear();
+
+        context._enemies.forEach(function(enemy: Enemy, index: number, array: Enemy[]){
+            enemy.render(game_screen);
         });
-        this.enemy_bullets.forEach(function (sprite: Sprite, index: number, array: Sprite[]) {
-            sprite.update(game_level);
+        context._enemy_bullets.forEach(function (bullet: EnemyBullet, index: number, array: EnemyBullet[]) {
+            bullet.render(game_screen);
         });
-        this.ship_bullets.forEach(function (sprite: Sprite, index: number, array: Sprite[]) {
-            sprite.update(game_level);
+        context._ship_bullets.forEach(function (bullet: ShipBullet, index: number, array: ShipBullet[]) {
+            bullet.render(game_screen);
         });
-        this.bonuses.forEach(function (sprite: Sprite, index: number, array: Sprite[]) {
-            sprite.update(game_level);
+        context._bonuses.forEach(function (bonus: Bonus, index: number, array: Bonus[]) {
+            bonus.render(game_screen);
         });
-        this.main.update(game_level);
+        context._main.render(game_screen);
+
+        context.render_common(game_screen, state);
+    }
+
+    update(state: GameState)
+    {
+        var context = this;
+
+        context._enemies.forEach(function (sprite: Enemy, index: number, array: Enemy[]) {
+            sprite.update(context, state);
+        });
+        context._enemy_bullets.forEach(function (sprite: EnemyBullet, index: number, array: EnemyBullet[]) {
+            sprite.update(context, state);
+        });
+        context._ship_bullets.forEach(function (sprite: ShipBullet, index: number, array: ShipBullet[]) {
+            sprite.update(context, state);
+        });
+        context._bonuses.forEach(function (sprite: Bonus, index: number, array: Bonus[]) {
+            sprite.update(context, state);
+        });
+        context._main.update(context, state);
 
         // test collisions
         var index = 0;
         while (true) {
-            if (game_level.enemies.length == index) break;
-            var enemy = game_level.enemies[index];
-            if (this.main.collides(enemy)) {
-                this.main.collided(enemy, this);
-                enemy.collided(this.main, this);
+            if (context._enemies.length <= index) break;
+            var enemy = context._enemies[index];
+            if (context._main.collides(enemy)) {
+                context._main.collided(enemy, context, state);
+                enemy.collided(this._main, context, state);
                 break;
             }
             else {
                 var index2 = 0;
                 while (true) {
-                    if (game_level.ship_bullets.length == index2) break;
-                    var bullet = game_level.ship_bullets[index2];
+                    if (context._ship_bullets.length <= index2) break;
+                    var bullet = context._ship_bullets[index2];
                     if (enemy.collides(bullet)) {
-                        bullet.collided(enemy, this);
-                        enemy.collided(bullet, this);
+                        bullet.collided(enemy, context, state);
+                        enemy.collided(bullet, context, state);
                     }
                     index2++;
                 }
@@ -469,109 +420,194 @@ class GameLevel {
 
     add_ship_bullet(bullet: ShipBullet)
     {
-        this.ship_bullets.push(bullet);
+        this._ship_bullets.push(bullet);
     }
 
     add_enemy_bullet(bullet: EnemyBullet) {
-        this.enemy_bullets.push(bullet);
+        this._enemy_bullets.push(bullet);
     }
 
-    add_life()
+    loose_life(state: GameState): boolean
     {
-        this.lives++;
-    }
-
-    scores(score: number)
-    {
-        this.score += score;
-    }
-
-    loose_life()
-    {
-        this.lives--;
-        if (this.lives == 0)
+        var result : boolean = state.loose_life();
+        if (state.get_lives() == 0)
         {
-            stop_game();
+            state.on_end_game();
         }
+        return result;
     }
 
     remove_enemy_bullet(bullet: EnemyBullet)
     {
-        this.enemy_bullets.splice(this.enemy_bullets.indexOf(bullet), 1);
+        var context: InvasionLevel = this;
+        var i: number = context._enemy_bullets.indexOf(bullet);
+        context._enemy_bullets.splice(i, 1);
     }
 
     remove_ship_bullet(bullet: ShipBullet) {
-        this.ship_bullets.splice(this.ship_bullets.indexOf(bullet), 1);
+        var i: number = this._ship_bullets.indexOf(bullet);
+        this._ship_bullets.splice(i, 1);
     }
 
     remove_bonus(bonus: Bonus) {
-        this.bonuses.splice(this.bonuses.indexOf(bonus), 1);
+        var i: number = this._bonuses.indexOf(bonus);
+        this._bonuses.splice(i, 1);
     }
 
     remove_enemy(enemy: Enemy) {
-        this.enemies.splice(this.enemies.indexOf(enemy), 1);
+        var i: number = this._enemies.indexOf(enemy);
+        this._enemies.splice(i, 1);
+    }
+
+    //
+
+    add_energy_to_main(energy: number) {
+        this._main.add_energy(energy);
+    }
+
+    increase_shoot_power_to_main() {
+        this._main.increase_shoot_power();
     }
 
     // commanding
 
     shoot() {
-        this.main.shoot(this);
+        this._main.shoot(this);
     }
 
     move_left() {
-        this.main.move(-5, 0);
+        this._main.move(-5, 0);
     }
 
     move_right() {
-        this.main.move(+5, 0);
+        this._main.move(5, 0);
     }
 }
 
-var main_canvas: HTMLCanvasElement;
-var main_context: CanvasRenderingContext2D;
-var back_buffer_canvas: HTMLCanvasElement;
-var back_buffer_context: CanvasRenderingContext2D;
+class SpriteSheet
+{
+    frames: HTMLImageElement;
 
-var game_level: GameLevel;
-var timerToken: number;
-
-function start_game() {
-    this.timerToken = setInterval(() => {
-        this.game_level.render(game_level);
-        // double buffer
-        this.game_level.update(game_level);
-    }, 33);
+    constructor(asset_src: string)
+    {
+        this.frames = new Image();
+        this.frames.src = asset_src;
+    }
 }
 
-function stop_game() {
-    clearTimeout(this.timerToken);
+class GameScreen {
+    _render_context: CanvasRenderingContext2D;
+
+    constructor(render_context: CanvasRenderingContext2D) {
+        this._render_context = render_context;
+    }
+
+    clear() {
+        this._render_context.clearRect(0, 0, this._render_context.canvas.width, this._render_context.canvas.height);
+    }
+
+    draw(sprite_sheet: SpriteSheet, x: number, y: number)
+    {
+        this._render_context.drawImage(sprite_sheet.frames, x, y);
+    }
+
+    write(text: string, x:number, y:number)
+    {
+        this._render_context.strokeText(text, x, y);
+    }
+}
+
+class Game
+{
+    _game_context: InvasionLevel;
+    _game_state: GameState;
+    _game_screen: GameScreen;
+
+    constructor(game_screen: GameScreen)
+    {
+        this._game_screen = game_screen;
+
+        var game_context = new InvasionLevel();
+        this._game_context = game_context;
+
+        var game_state = new GameState();
+        game_state.lives = 3;
+        game_state.score = 0;
+        game_state.paused = true;
+        game_state.game_loop = function () {
+            game_context.render(game_screen, game_state);
+            game_context.update(game_state);
+        };
+        game_state.on_end_game = game_state._suspend;
+        this._game_state = game_state;
+    }
+
+    // public API
+
+    shoot() {
+        this._game_context.shoot();
+    }
+
+    move_left() {
+        this._game_context.move_left();
+    }
+
+    move_right() {
+        this._game_context.move_right();
+    }
+
+    pause() {
+        this._game_state.pause();
+    }
 }
 
 $(function () {
 
     // http://stackoverflow.com/questions/12686927/typescript-casting-htmlelement
-    main_canvas = <HTMLCanvasElement>document.getElementById("main");
-    main_context = main_canvas.getContext("2d");
-    back_buffer_canvas = <HTMLCanvasElement>document.getElementById("back_buffer");
-    back_buffer_context = back_buffer_canvas.getContext("2d");
+    var render_canvas = <HTMLCanvasElement>document.getElementById("main");
+    var render_context = <CanvasRenderingContext2D>render_canvas.getContext("2d");
+    render_context.font = '12pt Calibri';
+    render_context.lineWidth = 3;
+    render_context.strokeStyle = 'blue';
 
-    main_context.font = '12pt Calibri';
-    main_context.lineWidth = 3;
-    main_context.strokeStyle = 'blue';
+    var game_screen = new GameScreen(render_context);
 
-    game_level = new GameLevel(main_context);
-    
-    start_game();
+    var game = new Game(game_screen);
+
+    window.onkeydown = (e) => {
+        switch (e.keyCode)
+        {
+            case 77:
+                game.move_right();
+                break;
+            case 78:
+                game.move_left();
+                break;
+            case 90:
+                game.shoot();
+                break;
+            case 80:
+                game.pause();
+                break;
+            default:
+                // unhandled key
+                break;
+        }
+    };
+
+    window.onkeyup = (e) => {
+        switch (e.keyCode) {
+            case 77:
+                break;
+            case 78:
+                break;
+            case 90:
+                break;
+            default:
+                // unhandled key
+                break;
+        }
+    };
+
+    game.pause();
 });
-
-window.onkeydown = (e) => {
-    if (e.keyCode == 77) {
-        game_level.move_right();
-    }
-    else if (e.keyCode == 78) {
-        game_level.move_left();
-    }
-    else if (e.keyCode == 90) {
-        game_level.shoot();
-    }
-};
