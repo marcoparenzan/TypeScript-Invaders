@@ -17,3 +17,7 @@ Pay attention to "this"!!!!!! in forEach, this change scope!!!!
 Collision are working. So score is appeared and start destroying enemies. Many enemies: red, green, blue, yellow, cyan and pink.
 Game loop is working. So it's ok.
 
+2013.08.18
+----------
+Major refactoring. Better structure, better manteinance. Updated to Typescript 0.9.1.
+
