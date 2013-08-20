@@ -21,176 +21,344 @@
     <UpgradeBackupLocation />
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="app.js">
+    <Content Include="assets\images\1.jpg" />
+    <Content Include="assets\images\1005-BizSpark-261x230.jpg" />
+    <Content Include="assets\images\2.jpg" />
+    <Content Include="assets\images\3.jpg" />
+    <Content Include="assets\images\4.jpg" />
+    <Content Include="assets\images\5.jpg" />
+    <Content Include="assets\images\armor.png" />
+    <Content Include="assets\images\author.jpg" />
+    <Content Include="assets\images\bage-activity.png" />
+    <Content Include="assets\images\bage-alert.png" />
+    <Content Include="assets\images\bage-attention.png" />
+    <Content Include="assets\images\bage-available.png" />
+    <Content Include="assets\images\bage-away.png" />
+    <Content Include="assets\images\bage-busy.png" />
+    <Content Include="assets\images\bage-error.png" />
+    <Content Include="assets\images\bage-newMessage.png" />
+    <Content Include="assets\images\bage-paused.png" />
+    <Content Include="assets\images\bage-playing.png" />
+    <Content Include="assets\images\bage-unavailable.png" />
+    <Content Include="assets\images\Calendar128.png" />
+    <Content Include="assets\images\Camera48.png" />
+    <Content Include="assets\images\chrome.png" />
+    <Content Include="assets\images\collapse24-black.png" />
+    <Content Include="assets\images\collapse24.png" />
+    <Content Include="assets\images\collapse32-black.png" />
+    <Content Include="assets\images\collapse32.png" />
+    <Content Include="assets\images\download-32.png" />
+    <Content Include="assets\images\excel2013icon.png" />
+    <Content Include="assets\images\expand24-black.png" />
+    <Content Include="assets\images\expand24.png" />
+    <Content Include="assets\images\expand32-black.png" />
+    <Content Include="assets\images\expand32.png" />
+    <Content Include="assets\images\firefox.png" />
+    <Content Include="assets\images\fork-32.png" />
+    <Content Include="assets\images\github.png" />
+    <Content Include="assets\images\grid.png" />
+    <Content Include="assets\images\icons-white.png" />
+    <Content Include="assets\images\icons.png" />
+    <Content Include="assets\images\ie.png" />
+    <Content Include="assets\images\InternetExplorer128.png" />
+    <Content Include="assets\images\lock-open.png" />
+    <Content Include="assets\images\lock.png" />
+    <Content Include="assets\images\logo-jetbrains.jpg" />
+    <Content Include="assets\images\logo32.png" />
+    <Content Include="assets\images\Mail128.png" />
+    <Content Include="assets\images\Market128.png" />
+    <Content Include="assets\images\michael.jpg" />
+    <Content Include="assets\images\Music128.png" />
+    <Content Include="assets\images\myface.jpg" />
+    <Content Include="assets\images\onenote2013icon.png" />
+    <Content Include="assets\images\opera.png" />
+    <Content Include="assets\images\Picture128.png" />
+    <Content Include="assets\images\preloader-w8-cycle-black.gif" />
+    <Content Include="assets\images\preloader-w8-cycle-white.gif" />
+    <Content Include="assets\images\preloader-w8-line-black.gif" />
+    <Content Include="assets\images\preloader-w8-line-white.gif" />
+    <Content Include="assets\images\pull24-dark.png" />
+    <Content Include="assets\images\pull24.png" />
+    <Content Include="assets\images\responsive.png" />
+    <Content Include="assets\images\row24.png" />
+    <Content Include="assets\images\Rss128.png" />
+    <Content Include="assets\images\shield-user.png" />
+    <Content Include="assets\images\simple.png" />
+    <Content Include="assets\images\star32.png" />
+    <Content Include="assets\images\stock-up.png" />
+    <Content Include="assets\images\Video128.png" />
+    <Content Include="assets\images\view-32.png" />
+    <Content Include="assets\images\windows-8-metro.jpg" />
+    <Content Include="assets\images\windows8_metro_green_1920_1080.jpg" />
+    <Content Include="assets\images\word2013icon.png" />
+    <Content Include="assets\images\YouTube128.png" />
+    <Content Include="games\typescript-invaders\app.js">
       <DependentUpon>app.ts</DependentUpon>
     </Content>
-    <Content Include="app.min.js">
+    <Content Include="games\typescript-invaders\assets\images\bullet.png" />
+    <Content Include="games\typescript-invaders\assets\images\enemy-blue.png" />
+    <Content Include="games\typescript-invaders\assets\images\enemy-cyan.png" />
+    <Content Include="games\typescript-invaders\assets\images\enemy-green.png" />
+    <Content Include="games\typescript-invaders\assets\images\enemy-pink.png" />
+    <Content Include="games\typescript-invaders\assets\images\enemy-red.png" />
+    <Content Include="games\typescript-invaders\assets\images\enemy-yellow.png" />
+    <Content Include="games\typescript-invaders\assets\images\mother-ship.png" />
+    <Content Include="games\typescript-invaders\assets\images\ship.png" />
+    <Content Include="games\typescript-invaders\app.min.js">
       <DependentUpon>app.ts</DependentUpon>
     </Content>
-    <Content Include="assets\images\bullet.png" />
-    <Content Include="assets\images\enemy-blue.png" />
-    <Content Include="assets\images\enemy-cyan.png" />
-    <Content Include="assets\images\enemy-green.png" />
-    <Content Include="assets\images\enemy-pink.png" />
-    <Content Include="assets\images\enemy-red.png" />
-    <Content Include="assets\images\enemy-yellow.png" />
-    <Content Include="assets\images\mother-ship.png" />
-    <Content Include="assets\images\ship.png" />
-    <Content Include="css\modern-responsive.css" />
-    <Content Include="css\modern.css" />
-    <Content Include="css\site.css" />
-    <Content Include="css\theme-dark.css" />
+    <Content Include="games\typescript-invaders\Bonus.js">
+      <DependentUpon>Bonus.ts</DependentUpon>
+    </Content>
+    <Content Include="games\typescript-invaders\Bonus.min.js">
+      <DependentUpon>Bonus.ts</DependentUpon>
+    </Content>
+    <Content Include="games\typescript-invaders\EndGameContext.js">
+      <DependentUpon>EndGameContext.ts</DependentUpon>
+    </Content>
+    <Content Include="games\typescript-invaders\EndGameContext.min.js">
+      <DependentUpon>EndGameContext.ts</DependentUpon>
+    </Content>
+    <Content Include="games\typescript-invaders\EndLevelContext.js">
+      <DependentUpon>EndLevelContext.ts</DependentUpon>
+    </Content>
+    <Content Include="games\typescript-invaders\EndLevelContext.min.js">
+      <DependentUpon>EndLevelContext.ts</DependentUpon>
+    </Content>
+    <Content Include="games\typescript-invaders\Enemy.js">
+      <DependentUpon>Enemy.ts</DependentUpon>
+    </Content>
+    <Content Include="games\typescript-invaders\Enemy.min.js">
+      <DependentUpon>Enemy.ts</DependentUpon>
+    </Content>
+    <Content Include="games\typescript-invaders\EnemyBullet.js">
+      <DependentUpon>EnemyBullet.ts</DependentUpon>
+    </Content>
+    <Content Include="games\typescript-invaders\EnemyBullet.min.js">
+      <DependentUpon>EnemyBullet.ts</DependentUpon>
+    </Content>
+    <Content Include="games\typescript-invaders\GameCommand.js">
+      <DependentUpon>GameCommand.ts</DependentUpon>
+    </Content>
+    <Content Include="games\typescript-invaders\GameCommand.min.js">
+      <DependentUpon>GameCommand.ts</DependentUpon>
+    </Content>
+    <Content Include="games\typescript-invaders\GameCommand.ts" />
+    <Content Include="games\typescript-invaders\GameContext.js">
+      <DependentUpon>GameContext.ts</DependentUpon>
+    </Content>
+    <Content Include="games\typescript-invaders\GameContext.min.js">
+      <DependentUpon>GameContext.ts</DependentUpon>
+    </Content>
+    <Content Include="games\typescript-invaders\GameScreen.js">
+      <DependentUpon>GameScreen.ts</DependentUpon>
+    </Content>
+    <Content Include="games\typescript-invaders\GameScreen.min.js">
+      <DependentUpon>GameScreen.ts</DependentUpon>
+    </Content>
+    <Content Include="games\typescript-invaders\GameState.js">
+      <DependentUpon>GameState.ts</DependentUpon>
+    </Content>
+    <Content Include="games\typescript-invaders\GameState.min.js">
+      <DependentUpon>GameState.ts</DependentUpon>
+    </Content>
+    <Content Include="games\typescript-invaders\GameState.ts" />
+    <Content Include="games\typescript-invaders\GameScreen.ts" />
+    <Content Include="games\typescript-invaders\Invader.js">
+      <DependentUpon>Invader.ts</DependentUpon>
+    </Content>
+    <Content Include="games\typescript-invaders\Invader.min.js">
+      <DependentUpon>Invader.ts</DependentUpon>
+    </Content>
+    <Content Include="games\typescript-invaders\InvasionLevel.js">
+      <DependentUpon>InvasionLevel.ts</DependentUpon>
+    </Content>
+    <Content Include="games\typescript-invaders\InvasionLevel.min.js">
+      <DependentUpon>InvasionLevel.ts</DependentUpon>
+    </Content>
+    <Content Include="games\typescript-invaders\Ship.js">
+      <DependentUpon>Ship.ts</DependentUpon>
+    </Content>
+    <Content Include="games\typescript-invaders\Ship.min.js">
+      <DependentUpon>Ship.ts</DependentUpon>
+    </Content>
+    <Content Include="games\typescript-invaders\ShipBullet.js">
+      <DependentUpon>ShipBullet.ts</DependentUpon>
+    </Content>
+    <Content Include="games\typescript-invaders\ShipBullet.min.js">
+      <DependentUpon>ShipBullet.ts</DependentUpon>
+    </Content>
+    <Content Include="games\typescript-invaders\Sprite.min.js">
+      <DependentUpon>Sprite.ts</DependentUpon>
+    </Content>
+    <Content Include="games\typescript-invaders\SpriteSheet.js">
+      <DependentUpon>SpriteSheet.ts</DependentUpon>
+    </Content>
+    <Content Include="games\typescript-invaders\SpriteSheet.min.js">
+      <DependentUpon>SpriteSheet.ts</DependentUpon>
+    </Content>
+    <Content Include="games\typescript-invaders\SpriteSheet.ts" />
+    <Content Include="games\typescript-invaders\InvasionLevel.ts" />
+    <Content Include="games\typescript-invaders\EndGameContext.ts" />
+    <Content Include="games\typescript-invaders\EndLevelContext.ts" />
+    <Content Include="games\typescript-invaders\StartGameContext.js">
+      <DependentUpon>StartGameContext.ts</DependentUpon>
+    </Content>
+    <Content Include="games\typescript-invaders\StartGameContext.min.js">
+      <DependentUpon>StartGameContext.ts</DependentUpon>
+    </Content>
+    <Content Include="games\typescript-invaders\StartLevelContext.js">
+      <DependentUpon>StartLevelContext.ts</DependentUpon>
+    </Content>
+    <Content Include="games\typescript-invaders\StartLevelContext.min.js">
+      <DependentUpon>StartLevelContext.ts</DependentUpon>
+    </Content>
+    <Content Include="games\typescript-invaders\StartLevelContext.ts" />
+    <Content Include="games\typescript-invaders\StartGameContext.ts" />
+    <Content Include="games\typescript-invaders\GameContext.ts" />
+    <Content Include="games\typescript-invaders\Invader.ts" />
+    <Content Include="games\typescript-invaders\Enemy.ts" />
+    <Content Include="games\typescript-invaders\Bonus.ts" />
+    <Content Include="games\typescript-invaders\EnemyBullet.ts" />
+    <Content Include="games\typescript-invaders\ShipBullet.ts" />
+    <Content Include="games\typescript-invaders\Ship.ts" />
+    <Content Include="assets\modern-responsive.css" />
+    <Content Include="assets\modern.css" />
+    <Content Include="assets\site.css" />
+    <Content Include="assets\theme-dark.css" />
     <Content Include="default.html" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="app.ts" />
+    <TypeScriptCompile Include="games\typescript-invaders\app.ts" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\iconFont.svg" />
-    <Content Include="fonts\license.txt" />
-    <Content Include="images\1.jpg" />
-    <Content Include="images\1005-BizSpark-261x230.jpg" />
-    <Content Include="images\2.jpg" />
-    <Content Include="images\3.jpg" />
-    <Content Include="images\4.jpg" />
-    <Content Include="images\5.jpg" />
-    <Content Include="images\armor.png" />
-    <Content Include="images\author.jpg" />
-    <Content Include="images\bage-activity.png" />
-    <Content Include="images\bage-alert.png" />
-    <Content Include="images\bage-attention.png" />
-    <Content Include="images\bage-available.png" />
-    <Content Include="images\bage-away.png" />
-    <Content Include="images\bage-busy.png" />
-    <Content Include="images\bage-error.png" />
-    <Content Include="images\bage-newMessage.png" />
-    <Content Include="images\bage-paused.png" />
-    <Content Include="images\bage-playing.png" />
-    <Content Include="images\bage-unavailable.png" />
-    <Content Include="images\Calendar128.png" />
-    <Content Include="images\Camera48.png" />
-    <Content Include="images\chrome.png" />
-    <Content Include="images\collapse24-black.png" />
-    <Content Include="images\collapse24.png" />
-    <Content Include="images\collapse32-black.png" />
-    <Content Include="images\collapse32.png" />
-    <Content Include="images\download-32.png" />
-    <Content Include="images\excel2013icon.png" />
-    <Content Include="images\expand24-black.png" />
-    <Content Include="images\expand24.png" />
-    <Content Include="images\expand32-black.png" />
-    <Content Include="images\expand32.png" />
-    <Content Include="images\firefox.png" />
-    <Content Include="images\fork-32.png" />
-    <Content Include="images\github.png" />
-    <Content Include="images\grid.png" />
-    <Content Include="images\icons-white.png" />
-    <Content Include="images\icons.png" />
-    <Content Include="images\ie.png" />
-    <Content Include="images\InternetExplorer128.png" />
-    <Content Include="images\lock-open.png" />
-    <Content Include="images\lock.png" />
-    <Content Include="images\logo-jetbrains.jpg" />
-    <Content Include="images\logo32.png" />
-    <Content Include="images\Mail128.png" />
-    <Content Include="images\Market128.png" />
-    <Content Include="images\michael.jpg" />
-    <Content Include="images\Music128.png" />
-    <Content Include="images\myface.jpg" />
-    <Content Include="images\onenote2013icon.png" />
-    <Content Include="images\opera.png" />
-    <Content Include="images\Picture128.png" />
-    <Content Include="images\preloader-w8-cycle-black.gif" />
-    <Content Include="images\preloader-w8-cycle-white.gif" />
-    <Content Include="images\preloader-w8-line-black.gif" />
-    <Content Include="images\preloader-w8-line-white.gif" />
-    <Content Include="images\pull24-dark.png" />
-    <Content Include="images\pull24.png" />
-    <Content Include="images\responsive.png" />
-    <Content Include="images\row24.png" />
-    <Content Include="images\Rss128.png" />
-    <Content Include="images\shield-user.png" />
-    <Content Include="images\simple.png" />
-    <Content Include="images\star32.png" />
-    <Content Include="images\stock-up.png" />
-    <Content Include="images\Video128.png" />
-    <Content Include="images\view-32.png" />
-    <Content Include="images\windows-8-metro.jpg" />
-    <Content Include="images\windows8_metro_green_1920_1080.jpg" />
-    <Content Include="images\word2013icon.png" />
-    <Content Include="images\YouTube128.png" />
-    <Content Include="js\assets\github.info.js" />
-    <Content Include="js\assets\google-analytics.js" />
-    <Content Include="js\assets\jquery-1.8.2.min.js" />
-    <Content Include="js\assets\jquery-1.9.0.min.js" />
-    <Content Include="js\assets\jquery.mousewheel.min.js" />
-    <Content Include="js\google-code-prettify\lang-apollo.js" />
-    <Content Include="js\google-code-prettify\lang-clj.js" />
-    <Content Include="js\google-code-prettify\lang-css.js" />
-    <Content Include="js\google-code-prettify\lang-go.js" />
-    <Content Include="js\google-code-prettify\lang-hs.js" />
-    <Content Include="js\google-code-prettify\lang-lisp.js" />
-    <Content Include="js\google-code-prettify\lang-lua.js" />
-    <Content Include="js\google-code-prettify\lang-ml.js" />
-    <Content Include="js\google-code-prettify\lang-n.js" />
-    <Content Include="js\google-code-prettify\lang-proto.js" />
-    <Content Include="js\google-code-prettify\lang-scala.js" />
-    <Content Include="js\google-code-prettify\lang-sql.js" />
-    <Content Include="js\google-code-prettify\lang-tex.js" />
-    <Content Include="js\google-code-prettify\lang-vb.js" />
-    <Content Include="js\google-code-prettify\lang-vhdl.js" />
-    <Content Include="js\google-code-prettify\lang-wiki.js" />
-    <Content Include="js\google-code-prettify\lang-xq.js" />
-    <Content Include="js\google-code-prettify\lang-yaml.js" />
-    <Content Include="js\google-code-prettify\prettify.css" />
-    <Content Include="js\google-code-prettify\prettify.js" />
-    <Content Include="js\modern\accordion.js" />
-    <Content Include="js\modern\buttonset.js" />
-    <Content Include="js\modern\carousel.js" />
-    <Content Include="js\modern\dialog.js" />
-    <Content Include="js\modern\dropdown.js" />
-    <Content Include="js\modern\input-control.js" />
-    <Content Include="js\modern\pagecontrol.js" />
-    <Content Include="js\modern\rating.js" />
-    <Content Include="js\modern\slider.js" />
-    <Content Include="js\modern\start-menu.js" />
-    <Content Include="js\modern\tile-drag.js" />
-    <Content Include="js\modern\tile-slider.js" />
-    <Content Include="js\sharrre\jquery.sharrre-1.3.4.min.js" />
-    <Content Include="Scripts\typings\backbone\backbone.d.ts" />
-    <Content Include="Scripts\typings\bootstrap\bootstrap.d.ts" />
-    <Content Include="Scripts\typings\d3\d3.d.ts" />
-    <Content Include="Scripts\typings\d3\d3.superformula.d.ts" />
-    <Content Include="Scripts\typings\easeljs\easeljs.d.ts" />
-    <Content Include="Scripts\typings\jquery\jquery.d.ts" />
-    <Content Include="Scripts\typings\linq\linq.3.0.3-Beta4.d.ts" />
-    <Content Include="Scripts\typings\linq\linq.d.ts" />
-    <Content Include="Scripts\typings\linq\linq.jquery.d.ts" />
-    <Content Include="Scripts\typings\modernizr\modernizr.d.ts" />
-    <Content Include="Scripts\typings\rx.js\rx.js.aggregates.d.ts" />
-    <Content Include="Scripts\typings\rx.js\rx.js.binding.d.ts" />
-    <Content Include="Scripts\typings\rx.js\rx.js.coincidence.d.ts" />
-    <Content Include="Scripts\typings\rx.js\rx.js.d.ts" />
-    <Content Include="Scripts\typings\rx.js\rx.js.joinpatterns.d.ts" />
-    <Content Include="Scripts\typings\rx.js\rx.js.jquery.d.ts" />
-    <Content Include="Scripts\typings\rx.js\rx.js.time.d.ts" />
-    <Content Include="Scripts\typings\signalr\signalr.d.ts" />
-    <Content Include="Scripts\typings\tweenjs\tweenjs.d.ts" />
-    <Content Include="Scripts\typings\underscore\underscore.d.ts" />
+    <Content Include="assets\fonts\iconFont.svg" />
+    <Content Include="assets\fonts\license.txt" />
+    <Content Include="Scripts\github.info.js" />
+    <Content Include="Scripts\google-analytics.js" />
+    <Content Include="Scripts\jquery-1.8.2.min.js" />
+    <Content Include="Scripts\jquery-1.9.0.min.js" />
+    <Content Include="Scripts\jquery.mousewheel.min.js" />
+    <Content Include="Scripts\google-code-prettify\lang-apollo.js" />
+    <Content Include="Scripts\google-code-prettify\lang-clj.js" />
+    <Content Include="Scripts\google-code-prettify\lang-css.js" />
+    <Content Include="Scripts\google-code-prettify\lang-go.js" />
+    <Content Include="Scripts\google-code-prettify\lang-hs.js" />
+    <Content Include="Scripts\google-code-prettify\lang-lisp.js" />
+    <Content Include="Scripts\google-code-prettify\lang-lua.js" />
+    <Content Include="Scripts\google-code-prettify\lang-ml.js" />
+    <Content Include="Scripts\google-code-prettify\lang-n.js" />
+    <Content Include="Scripts\google-code-prettify\lang-proto.js" />
+    <Content Include="Scripts\google-code-prettify\lang-scala.js" />
+    <Content Include="Scripts\google-code-prettify\lang-sql.js" />
+    <Content Include="Scripts\google-code-prettify\lang-tex.js" />
+    <Content Include="Scripts\google-code-prettify\lang-vb.js" />
+    <Content Include="Scripts\google-code-prettify\lang-vhdl.js" />
+    <Content Include="Scripts\google-code-prettify\lang-wiki.js" />
+    <Content Include="Scripts\google-code-prettify\lang-xq.js" />
+    <Content Include="Scripts\google-code-prettify\lang-yaml.js" />
+    <Content Include="Scripts\google-code-prettify\prettify.css" />
+    <Content Include="Scripts\google-code-prettify\prettify.js" />
+    <Content Include="Scripts\modern\accordion.js" />
+    <Content Include="Scripts\modern\buttonset.js" />
+    <Content Include="Scripts\modern\carousel.js" />
+    <Content Include="Scripts\modern\dialog.js" />
+    <Content Include="Scripts\modern\dropdown.js" />
+    <Content Include="Scripts\modern\input-control.js" />
+    <Content Include="Scripts\modern\pagecontrol.js" />
+    <Content Include="Scripts\modern\rating.js" />
+    <Content Include="Scripts\modern\slider.js" />
+    <Content Include="Scripts\modern\start-menu.js" />
+    <Content Include="Scripts\modern\tile-drag.js" />
+    <Content Include="Scripts\modern\tile-slider.js" />
+    <Content Include="Scripts\sharrre\jquery.sharrre-1.3.4.min.js" />
+    <Content Include="games\typescript-invaders\typings\backbone\backbone.d.ts" />
+    <Content Include="games\typescript-invaders\typings\bootstrap\bootstrap.d.ts" />
+    <Content Include="games\typescript-invaders\typings\d3\d3.d.ts" />
+    <Content Include="games\typescript-invaders\typings\d3\d3.superformula.d.ts" />
+    <Content Include="games\typescript-invaders\typings\easeljs\easeljs.d.ts" />
+    <Content Include="games\typescript-invaders\typings\jquery\jquery.d.ts" />
+    <Content Include="games\typescript-invaders\typings\linq\linq.3.0.3-Beta4.d.ts" />
+    <Content Include="games\typescript-invaders\typings\linq\linq.d.ts" />
+    <Content Include="games\typescript-invaders\typings\linq\linq.jquery.d.ts" />
+    <Content Include="games\typescript-invaders\typings\modernizr\modernizr.d.ts" />
+    <Content Include="games\typescript-invaders\typings\rx.js\rx.js.aggregates.d.ts" />
+    <Content Include="games\typescript-invaders\typings\rx.js\rx.js.binding.d.ts" />
+    <Content Include="games\typescript-invaders\typings\rx.js\rx.js.coincidence.d.ts" />
+    <Content Include="games\typescript-invaders\typings\rx.js\rx.js.d.ts" />
+    <Content Include="games\typescript-invaders\typings\rx.js\rx.js.joinpatterns.d.ts" />
+    <Content Include="games\typescript-invaders\typings\rx.js\rx.js.jquery.d.ts" />
+    <Content Include="games\typescript-invaders\typings\rx.js\rx.js.time.d.ts" />
+    <Content Include="games\typescript-invaders\typings\signalr\signalr.d.ts" />
+    <Content Include="games\typescript-invaders\typings\tweenjs\tweenjs.d.ts" />
+    <Content Include="games\typescript-invaders\typings\underscore\underscore.d.ts" />
+    <Content Include="games\typescript-invaders\Sprite.js">
+      <DependentUpon>Sprite.ts</DependentUpon>
+    </Content>
+    <Content Include="games\typescript-invaders\Sprite.ts" />
     <Content Include="web.config" />
-    <Content Include="app.js.map">
+    <Content Include="games\typescript-invaders\app.js.map">
       <DependentUpon>app.ts</DependentUpon>
     </Content>
-    <Content Include="app.min.js.map">
-      <DependentUpon>app.js</DependentUpon>
-    </Content>
-    <Content Include="fonts\iconFont.eot" />
-    <Content Include="fonts\iconFont.ttf" />
-    <Content Include="fonts\iconFont.woff" />
-    <Content Include="js\sharrre\sharrre.php" />
+    <Content Include="assets\fonts\iconFont.eot" />
+    <Content Include="assets\fonts\iconFont.ttf" />
+    <Content Include="assets\fonts\iconFont.woff" />
+    <Content Include="Scripts\sharrre\sharrre.php" />
     <Content Include="packages.config" />
     <None Include="PublishProfiles\typescript-invaders - FTP.pubxml" />
     <None Include="PublishProfiles\typescript-invaders - Web Deploy.pubxml" />
+    <Content Include="games\typescript-invaders\SpriteSheet.js.map">
+      <DependentUpon>SpriteSheet.ts</DependentUpon>
+    </Content>
+    <Content Include="games\typescript-invaders\InvasionLevel.js.map">
+      <DependentUpon>InvasionLevel.ts</DependentUpon>
+    </Content>
+    <Content Include="games\typescript-invaders\Invader.js.map">
+      <DependentUpon>Invader.ts</DependentUpon>
+    </Content>
+    <Content Include="games\typescript-invaders\GameScreen.js.map">
+      <DependentUpon>GameScreen.ts</DependentUpon>
+    </Content>
+    <Content Include="games\typescript-invaders\GameContext.js.map">
+      <DependentUpon>GameContext.ts</DependentUpon>
+    </Content>
+    <Content Include="games\typescript-invaders\GameCommand.js.map">
+      <DependentUpon>GameCommand.ts</DependentUpon>
+    </Content>
+    <Content Include="games\typescript-invaders\EnemyBullet.js.map">
+      <DependentUpon>EnemyBullet.ts</DependentUpon>
+    </Content>
+    <Content Include="games\typescript-invaders\Enemy.js.map">
+      <DependentUpon>Enemy.ts</DependentUpon>
+    </Content>
+    <Content Include="games\typescript-invaders\EndLevelContext.js.map">
+      <DependentUpon>EndLevelContext.ts</DependentUpon>
+    </Content>
+    <Content Include="games\typescript-invaders\EndGameContext.js.map">
+      <DependentUpon>EndGameContext.ts</DependentUpon>
+    </Content>
+    <Content Include="games\typescript-invaders\Bonus.js.map">
+      <DependentUpon>Bonus.ts</DependentUpon>
+    </Content>
+    <Content Include="games\typescript-invaders\GameState.js.map">
+      <DependentUpon>GameState.ts</DependentUpon>
+    </Content>
+    <Content Include="games\typescript-invaders\Ship.js.map">
+      <DependentUpon>Ship.ts</DependentUpon>
+    </Content>
+    <Content Include="games\typescript-invaders\ShipBullet.js.map">
+      <DependentUpon>ShipBullet.ts</DependentUpon>
+    </Content>
+    <Content Include="games\typescript-invaders\Sprite.js.map">
+      <DependentUpon>Sprite.ts</DependentUpon>
+    </Content>
+    <Content Include="games\typescript-invaders\StartGameContext.js.map">
+      <DependentUpon>StartGameContext.ts</DependentUpon>
+    </Content>
+    <Content Include="games\typescript-invaders\StartLevelContext.js.map">
+      <DependentUpon>StartLevelContext.ts</DependentUpon>
+    </Content>
+    <None Include="typescript-invaders.pubxml" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>

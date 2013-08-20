@@ -1,32 +1,54 @@
 ﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1.0, maximum-scale=1">
-    <meta name="description" content="TypeScript Invaders">
-    <meta name="author" content="Sergey Pimenov">
-    <meta name="keywords" content="TypeScript, Space Invaders, Javascript">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1.0, maximum-scale=1" />
+    <meta name="description" content="TypeScript Invaders" />
+    <meta name="author" content="Marco Parenzan" />
+    <meta name="keywords" content="TypeScript, Space Invaders, Javascript" />
 
-    <link href="css/modern.css" rel="stylesheet">
-    <link href="css/modern-responsive.css" rel="stylesheet">
-    <link href="css/site.css" rel="stylesheet" type="text/css">
-    <link href="js/google-code-prettify/prettify.css" rel="stylesheet" type="text/css">
+    <link href="assets/modern.css" rel="stylesheet" />
+    <link href="assets/modern-responsive.css" rel="stylesheet" />
+    <link href="assets/site.css" rel="stylesheet" type="text/css" />
+    <link href="scripts/google-code-prettify/prettify.css" rel="stylesheet" type="text/css" />
 
-    <script type="text/javascript" src="js/assets/jquery-1.9.0.min.js"></script>
-    <script type="text/javascript" src="js/assets/jquery.mousewheel.min.js"></script>
+    <script type="text/javascript" src="scripts/jquery-1.9.0.min.js"></script>
+    <script type="text/javascript" src="scripts/jquery.mousewheel.min.js"></script>
 
-    <script type="text/javascript" src="js/modern/dropdown.js"></script>
-    <script type="text/javascript" src="js/modern/accordion.js"></script>
-    <script type="text/javascript" src="js/modern/buttonset.js"></script>
-    <script type="text/javascript" src="js/modern/carousel.js"></script>
-    <script type="text/javascript" src="js/modern/input-control.js"></script>
-    <script type="text/javascript" src="js/modern/pagecontrol.js"></script>
-    <script type="text/javascript" src="js/modern/rating.js"></script>
-    <script type="text/javascript" src="js/modern/slider.js"></script>
-    <script type="text/javascript" src="js/modern/tile-slider.js"></script>
-    <script type="text/javascript" src="js/modern/tile-drag.js"></script>
+    <script type="text/javascript" src="scripts/modern/dropdown.js"></script>
+    <script type="text/javascript" src="scripts/modern/accordion.js"></script>
+    <script type="text/javascript" src="scripts/modern/buttonset.js"></script>
+    <script type="text/javascript" src="scripts/modern/carousel.js"></script>
+    <script type="text/javascript" src="scripts/modern/input-control.js"></script>
+    <script type="text/javascript" src="scripts/modern/pagecontrol.js"></script>
+    <script type="text/javascript" src="scripts/modern/rating.js"></script>
+    <script type="text/javascript" src="scripts/modern/slider.js"></script>
+    <script type="text/javascript" src="scripts/modern/tile-slider.js"></script>
+    <script type="text/javascript" src="scripts/modern/tile-drag.js"></script>
 
-    <script src="app.js"></script>
+    <script type="text/javascript" src="scripts/github.info.js"></script>
+    <script type="text/javascript" src="scripts/google-analytics.js"></script>
+    <script type="text/javascript" src="scripts/google-code-prettify/prettify.js"></script>
+
+    <script src="games/typescript-invaders/Sprite.js"></script>
+    <script src="games/typescript-invaders/GameContext.js"></script>
+    <script src="games/typescript-invaders/Bonus.js"></script>
+    <script src="games/typescript-invaders/EndGameContext.js"></script>
+    <script src="games/typescript-invaders/EndLevelContext.js"></script>
+    <script src="games/typescript-invaders/Enemy.js"></script>
+    <script src="games/typescript-invaders/EnemyBullet.js"></script>
+    <script src="games/typescript-invaders/GameCommand.js"></script>
+    <script src="games/typescript-invaders/GameScreen.js"></script>
+    <script src="games/typescript-invaders/GameState.js"></script>
+    <script src="games/typescript-invaders/Invader.js"></script>
+    <script src="games/typescript-invaders/InvasionLevel.js"></script>
+    <script src="games/typescript-invaders/Ship.js"></script>
+    <script src="games/typescript-invaders/ShipBullet.js"></script>
+    <script src="games/typescript-invaders/SpriteSheet.js"></script>
+    <script src="games/typescript-invaders/StartGameContext.js"></script>
+    <script src="games/typescript-invaders/StartLevelContext.js"></script>
+
+    <script src="games/typescript-invaders/app.js"></script>
 
     <title>TypeScript Invaders</title>
 </head>
@@ -37,7 +59,7 @@
                 <span class="pull-menu"></span>
 
                 <a href="/"><span class="element brand">
-                    <img class="place-left" src="images/logo32.png" style="height: 20px" />
+                    <img class="place-left" src="assets/images/logo32.png" style="height: 20px" />
                     TypeScript Invaders
                 </span></a>
 
@@ -45,7 +67,6 @@
 
                 <ul class="menu">
                     <li><a href="/">Home</a></li>
-                    <li><a href="https://github.com/marcoparenzan/TypeScript-Invaders">Source</a></li>
                 </ul>
             </div>
         </div>
@@ -56,25 +77,12 @@
             <div class="page-region-content">
                 <div class="grid">
                     <div class="row">
-                        <div class="span12">
-                            <div class="hero-unit">
-                                <canvas id="main" style="background-color: black;" width="800" height="600"></canvas>
-                                <canvas id="back_buffer" style="background-color: black; display: none; visibility: hidden;" width="800" height="600"></canvas>
-                            </div>
+                        <div class="span9">
+                            <canvas id="main" style="background-color: black;" width="700" height="500"></canvas>
+                            <canvas id="back_buffer" style="background-color: black; display: none; visibility: hidden;" width="800" height="600"></canvas>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="span4">
-                            Press N for left, M for right, Z for shooting!
-                        </div>
-                        <div class="span4"></div>
-                        <div class="span4">
-                            <div id="social">
-                                <div id="shareme" data-url="http://typescript-invaders.azurewebsites.net/" data-text="" data-title="share this page"></div>
-                            </div>
-
-                            <br />
-                            <h2><i class="icon-github-3"></i>GitHub Project Info:</h2>
+                        <div class="span3">
+                            <h2><i class="icon-github-3"></i>GitHub Project</h2>
                             <table class="github-info" data-repo="marcoparenzan/TypeScript-Invaders">
                                 <tbody>
                                     <tr>
@@ -87,21 +95,16 @@
                                     </tr>
                                     <tr>
                                         <td colspan="2" style="padding: 20px 0 0; border: 0;">
-                                            <button class="image-button bg-color-pink fg-color-white" onclick="document.location.href='https://github.com/marcoparenzan/TypeScript-Invaders'">View on Github<img class="bg-color-pinkDark" src="images/github.png" /></button>
-                                            <button class="image-button bg-color-darken fg-color-white" onclick="document.location.href='https://github.com/marcoparenzan/TypeScript-InvadersS/zipball/master'">Download<img class="bg-color-green" src="images/download-32.png" /></button>
+                                            <button class="image-button bg-color-pink fg-color-white" onclick="document.location.href='https://github.com/marcoparenzan/TypeScript-Invaders'">View on Github<img class="bg-color-pinkDark" src="assets/images/github.png" /></button>
+                                            <button class="image-button bg-color-darken fg-color-white" onclick="document.location.href='https://github.com/marcoparenzan/TypeScript-InvadersS/zipball/master'">Download<img class="bg-color-green" src="assets/images/download-32.png" /></button>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
-
-                            <br />
-                            <div class="">
-                            </div>
-                            <div class="">
-                            </div>
-
+                            <hr />
+                            Press N for left, M for right, Z for shooting, P for pause!
+                       
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -110,18 +113,12 @@
     <div class="page">
         <div class="nav-bar">
             <div class="nav-bar-inner padding10">
-                <span class="element">2013 TypeScript Invaders &copy; by <a class="fg-color-white" href="#">Marco Parenzan</a>
-                </span>
-                <span class="element">- Template from</span>
-                <span class="element">2012, Metro UI CSS © by Sergey Pimenov
-                </span>
+                <span class="element">2013 TypeScript Invaders &copy; by <a class="fg-color-white" href="#">Marco Parenzan</a></span>
+                <span class="element">-</span>
+                <span class="element">Template: Metro UI CSS © by Sergey Pimenov</span>
             </div>
         </div>
     </div>
-
-    <script type="text/javascript" src="js/assets/github.info.js"></script>
-    <script type="text/javascript" src="js/assets/google-analytics.js"></script>
-    <script type="text/javascript" src="js/google-code-prettify/prettify.js"></script>
 
 </body>
 </html>

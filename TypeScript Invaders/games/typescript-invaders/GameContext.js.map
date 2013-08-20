@@ -1,0 +1,1 @@
+{"version":3,"file":"GameContext.js","sourceRoot":"","sources":["GameContext.ts"],"names":["GameContext","GameContext.constructor","GameContext.render","GameContext.update"],"mappings":"AAAA,qCAAqC;AACrC,sCAAsC;AACtC;IAAAA;;AAOCA,IALGA,+BAAAA,UAAOA,WAAuBA,EAAEA,KAAgBA;IAChDE,CAACA;;IAEDF,+BAAAA,UAAOA,KAAgBA;IACvBG,CAACA;IACLH;AAACA,CAAAA,IAAA"}
